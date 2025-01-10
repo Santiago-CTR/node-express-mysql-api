@@ -1,0 +1,26 @@
+{
+  "name": "express-mysql-api",
+  "version": "1.0.0",
+  "description": "api-crud-nodejs-express-mysql",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env src/index.js",
+    "dev": "node --watch --env-file=.env src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Santiago-CTR/node-express-mysql-api.git"
+  },
+  "author": "Santiago-CTR",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Santiago-CTR/node-express-mysql-api/issues"
+  },
+  "homepage": "https://github.com/Santiago-CTR/node-express-mysql-api#readme",
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-mysql-api": "file:",
+    "mysql2": "^3.12.0"
+  }
+}
