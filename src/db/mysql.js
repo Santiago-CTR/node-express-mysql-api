@@ -17,7 +17,7 @@ const conMySql = () => {
     if (err.code === "PROTOCOL_CONNECTION_LOST") {
       conMySql();
     } else {
-      console.log("Conexion con la BD Perdida", err);
+      console.log("Conexion con la DB Perdida", err);
       throw err;
     }
   });
@@ -25,8 +25,32 @@ const conMySql = () => {
 
 conMySql();
 
-const getAll = (table) => {
-  return new Promise((resolve, reject) => {});
+export const getAll = (table) => {
+  return new Promise((resolve, reject) => {
+    conexion.query("SELECT * FROM ??", table, (err, data) => {
+      return err ? reject(err) : resolve(data);
+    });
+  });
 };
-const getById = (table, data) => {};
-const deleteItem = (table, data) => {};
+export const getById = (table, data) => {
+  return new Promise((resolve, reject) => {
+    conexion.query(
+      "SELECT * FROM ?? WHERE id = ?",
+      [table, data],
+      (err, data) => {
+        return err ? reject(err) : resolve(data);
+      }
+    );
+  });
+};
+export const deleteRow = (table, data) => {
+  return new Promise((resolve, reject) => {
+    conexion.query(
+      "DELETE FROM ?? WHERE id = ?",
+      [table, data.id],
+      (error, data) => {
+        return error ? reject(error) : resolve(data);
+      }
+    );
+  });
+};
